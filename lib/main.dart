@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// comentário teste
+// kkkkk
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -80,8 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: <Widget>[
                           Text('IconButton: '),
                           IconButton(
-                            onPressed: () =>
-                                _showToast('Clicked on IconButton'),
+                            onPressed: () => _showToast('Clicked on IconButton'),
                             icon: Icon(Icons.build),
                           ),
                         ],
@@ -95,17 +97,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                 setState(() {
                                   _dropdownButtonValue = value;
                                 });
-                                _showToast(
-                                    'Changed value of dropdown button to $value');
+                                _showToast('Changed value of dropdown button to $value');
                               },
-                              items: ['One', 'Two', 'Three', 'Four'].map<
-                                  DropdownMenuItem<String>>((String value) =>
-                                  DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  )
-                              ).toList()
-                          ),
+                              items: [
+                                'One',
+                                'Two',
+                                'Three',
+                                'Four'
+                              ]
+                                  .map<DropdownMenuItem<String>>((String value) => DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      ))
+                                  .toList()),
                         ],
                       ),
                       Row(
@@ -117,28 +121,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                 setState(() {
                                   _popupMenuButtonValue = result;
                                 });
-                                _showToast(
-                                    'Selected \'$result\' item on PopupMenuButton');
+                                _showToast('Selected \'$result\' item on PopupMenuButton');
                               },
-                              itemBuilder: (BuildContext context) =>
-                              <PopupMenuEntry<String>>[
-                                const PopupMenuItem<String>(
-                                  value: 'One',
-                                  child: Text('One'),
-                                ),
-                                const PopupMenuItem<String>(
-                                  value: 'Two',
-                                  child: Text('Two'),
-                                ),
-                                const PopupMenuItem<String>(
-                                  value: 'Three',
-                                  child: Text('Three'),
-                                ),
-                                const PopupMenuItem<String>(
-                                  value: 'Four',
-                                  child: Text('Four'),
-                                ),
-                              ]),
+                              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                                    const PopupMenuItem<String>(
+                                      value: 'One',
+                                      child: Text('One'),
+                                    ),
+                                    const PopupMenuItem<String>(
+                                      value: 'Two',
+                                      child: Text('Two'),
+                                    ),
+                                    const PopupMenuItem<String>(
+                                      value: 'Three',
+                                      child: Text('Three'),
+                                    ),
+                                    const PopupMenuItem<String>(
+                                      value: 'Four',
+                                      child: Text('Four'),
+                                    ),
+                                  ]),
                         ],
                       ),
                     ],
@@ -147,26 +149,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               _SpaceLine(),
               // Checkbox
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+                _GroupText('Checkbox'),
+                Row(
                   children: <Widget>[
-                    _GroupText('Checkbox'),
-                    Row(
-                      children: <Widget>[
-                        Text('Simple checkbox'),
-                        Checkbox(value: _checkboxValue,
-                            onChanged: (newValue) {
-                              setState(() {
-                                _checkboxValue = newValue;
-                              });
-                              _showToast(
-                                  'Changed value of checkbox to $_checkboxValue');
-                            }),
-                      ],
-                    )
-                  ]
-              ),
+                    Text('Simple checkbox'),
+                    Checkbox(
+                        value: _checkboxValue,
+                        onChanged: (newValue) {
+                          setState(() {
+                            _checkboxValue = newValue;
+                          });
+                          _showToast('Changed value of checkbox to $_checkboxValue');
+                        }),
+                  ],
+                )
+              ]),
               _SpaceLine(),
               // Radio[Box]
               Column(
@@ -285,7 +283,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   _GroupText('DateTimePicker'),
                   OutlineButton(
                     onPressed: () {
-                      showDatePicker(context: context,
+                      showDatePicker(
+                        context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(1970),
                         lastDate: DateTime.now(),
@@ -308,7 +307,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 50,)
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
@@ -322,12 +323,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _showToast(String text) {
-    _scaffoldKey.currentState.showSnackBar(
-        SnackBar(
-          content: Text(text),
-          duration: Duration(seconds: 1),
-        )
-    );
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text(text),
+      duration: Duration(seconds: 1),
+    ));
   }
 }
 
@@ -340,11 +339,9 @@ class _GroupText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-      child: Text(text,
-        style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w500
-        ),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
       ),
     );
   }
@@ -353,8 +350,11 @@ class _GroupText extends StatelessWidget {
 class _SpaceLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: 5,
-      child: Container(color: Colors.grey,),
+    return SizedBox(
+      height: 5,
+      child: Container(
+        color: Colors.grey,
+      ),
     );
   }
 }
